@@ -17,6 +17,9 @@ public class Sketch extends PApplet {
    */
   public void setup() {
     background(0, 200, 255);
+    
+    // Output middle y-point of the first house
+    System.out.println("Middle y-coordinate of House 1: " + intReturnValue(100, 200));
   }
 
   /**
@@ -30,11 +33,12 @@ public class Sketch extends PApplet {
     // Draw sun
     sun(50, 60, 80);
 
-    // Draw house
-    house(200, 200, 100);
+    // Draw house 1
+    house(200, 100, 200);
 
-
-
+    // Draw house 2 
+    house(50, intReturnValue(100, 200), 100);
+    
   }
   /**
   * Draws a base grass for a drawing that utilizes grass for the base
@@ -87,5 +91,24 @@ public class Sketch extends PApplet {
     // Roof
     fill(0);
     triangle(intHouseX, intHouseY, intHouseX + (intHouseSize / 2), intHouseY - (intHouseSize / 4), intHouseX + (intHouseSize), intHouseY);
+
+    // Window
+    fill(0);
+    rect((intHouseX + (intHouseSize / 2)), (intHouseY + (intHouseSize / 2)), (intHouseSize / 2), (intHouseSize / 4));
+
+    // Door 
+    fill(0);
+    rect(intHouseX, (intHouseY + (intHouseSize / 2)), (intHouseSize / 3), (intHouseSize / 2));
+  }
+
+  /**
+   * 
+   * @param intHouseY y-coordinate of the house 
+   * @param intHouseSize size of the house 
+   * @return returns the middle y-coordinate of the house
+   */
+  private int intReturnValue(int intHouseY, int intHouseSize)
+  {
+    return intHouseY + (intHouseSize / 2);
   }
 }
